@@ -82,16 +82,45 @@ class BinarySearchTree {
     traverse(current);
     return results;
   }
+
+  DFSPostOrder() {
+    const results = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node === null) return;
+      traverse(node.left);
+      traverse(node.right);
+      results.push(node.val);
+    }
+    traverse(current);
+    return results;
+  }
+
+  DFSInOrder() {
+    const results = [];
+    let current = this.root;
+
+    function traverse(node) {
+      if (node === null) return;
+      traverse(node.left);
+      results.push(node.val);
+      traverse(node.right);
+    }
+    traverse(current);
+    return results;
+  }
 }
 
 const tree = new BinarySearchTree();
 console.log('insert', tree.insert(10));
-console.log('insert', tree.insert(5));
-console.log('insert', tree.insert(13));
-console.log('insert', tree.insert(2));
-console.log('insert', tree.insert(11));
-console.log('insert', tree.insert(16));
-console.log('insert', tree.insert(7));
+console.log('insert', tree.insert(6));
+console.log('insert', tree.insert(15));
+console.log('insert', tree.insert(3));
+console.log('insert', tree.insert(8));
+console.log('insert', tree.insert(20));
 console.log('find', tree.find(7));
 console.log('BFS', tree.BFS());
 console.log('DFSPreOrder', tree.DFSPreOrder());
+console.log('DFSPostOrder', tree.DFSPostOrder());
+console.log('DFSInOrder', tree.DFSInOrder());
