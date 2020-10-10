@@ -17,20 +17,31 @@
 //       '### '
 //       '####'
 
-function steps(n) {
-  let line = '';
-  let count = 0;
+// RECURSIVE
+function steps(n, row = 0, step = '') {
+  if (n === row) return;
 
-  for (let row = 0; row < n; row++) {
-    let stair = '';
-
-    for (let col = 0; col < n; col++) {
-      if (col <= row) stair += '#';
-      else stair += ' ';
-    }
-
-    console.log(stair);
+  if (n === step.length) {
+    console.log(step);
+    steps(n, ++row);
+    return;
   }
+
+  const add = step.length <= row ? '#' : ' ';
+  steps(n, row, step + add);
 }
+
+// ITERATIVE
+// function steps(n) {
+//   for (let row = 1; row <= n; row++) {
+//     let step = '';
+
+//     for (let col = 1; col <= n; col++) {
+//       if (col <= row) step += '#';
+//       else step += ' ';
+//     }
+//     console.log(step);
+//   }
+// }
 
 module.exports = steps;
