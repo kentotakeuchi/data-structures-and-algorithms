@@ -8,7 +8,19 @@
 // Example:
 //   fib(4) === 3
 
-// ITERATIVE
+// MINE: ITERATIVE
+function fib(n) {
+  const results = [0, 1];
+
+  for (let i = 2; i <= n; i++) {
+    const sum = results[i - 1] + results[i - 2];
+    results.push(sum);
+  }
+
+  return results[n];
+}
+
+// ANSWER: ITERATIVE
 // function fib(n) {
 //   const results = [0, 1];
 
@@ -22,32 +34,32 @@
 //   return results[n];
 // }
 
-// RECURSIVE
+// ANSWER: RECURSIVE
 // function fib(n) {
 //   if (n < 2) return n;
 //   return fib(n - 2) + fib(n - 1);
 // }
 
-// MEMOIZATION
-function memoize(fn) {
-  const cache = {};
+// ANSWER: MEMOIZATION
+// function memoize(fn) {
+//   const cache = {};
 
-  return function (...args) {
-    if (cache[args]) {
-      return cache[args];
-    }
+//   return function (...args) {
+//     if (cache[args]) {
+//       return cache[args];
+//     }
 
-    const result = fn.apply(this, args);
-    cache[args] = result;
-    return result;
-  };
-}
+//     const result = fn.apply(this, args);
+//     cache[args] = result;
+//     return result;
+//   };
+// }
 
-function slowFib(n) {
-  if (n < 2) return n;
-  return fib(n - 2) + fib(n - 1);
-}
+// function slowFib(n) {
+//   if (n < 2) return n;
+//   return fib(n - 2) + fib(n - 1);
+// }
 
-const fib = memoize(slowFib);
+// const fib = memoize(slowFib);
 
 module.exports = fib;
