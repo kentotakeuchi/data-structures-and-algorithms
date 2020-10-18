@@ -8,6 +8,7 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
+// MINE
 class Queue {
   constructor() {
     this.data = [];
@@ -15,13 +16,28 @@ class Queue {
 
   add(val) {
     this.data.unshift(val);
-    return this.data;
   }
 
   remove() {
-    const popped = this.data.pop();
-    return popped;
+    return this.data.pop();
   }
 }
+
+// ANSWER
+// class Queue {
+//   constructor() {
+//     this.data = [];
+//   }
+
+//   add(val) {
+//     this.data.unshift(val);
+//     return this.data;
+//   }
+
+//   remove() {
+//     const popped = this.data.pop();
+//     return popped;
+//   }
+// }
 
 module.exports = Queue;
