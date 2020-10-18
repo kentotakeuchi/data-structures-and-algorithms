@@ -9,16 +9,46 @@
 //   fib(4) === 3
 
 // MINE: ITERATIVE
-function fib(n) {
-  const results = [0, 1];
+// function fib(n) {
+//   const results = [0, 1];
 
-  for (let i = 2; i <= n; i++) {
-    const sum = results[i - 1] + results[i - 2];
-    results.push(sum);
-  }
+//   for (let i = 2; i <= n; i++) {
+//     const sum = results[i - 1] + results[i - 2];
+//     results.push(sum);
+//   }
 
-  return results[n];
+//   return results[n];
+// }
+
+// MINE: RECURSIVE
+// function fib(n) {
+//   if (n < 2) return n;
+
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+// MINE: RECURSIVE + MEMOIZATION
+function slowFib(n) {
+  if (n < 2) return n;
+
+  return fib(n - 1) + fib(n - 2);
 }
+
+function memoize(fn) {
+  const cache = {};
+
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
+}
+
+const fib = memoize(slowFib);
 
 // ANSWER: ITERATIVE
 // function fib(n) {
