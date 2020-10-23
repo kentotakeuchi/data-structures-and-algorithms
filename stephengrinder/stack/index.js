@@ -10,6 +10,7 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
+// MINE
 class Stack {
   constructor() {
     this.data = [];
@@ -27,5 +28,24 @@ class Stack {
     return this.data[this.data.length - 1];
   }
 }
+
+// ANSWER
+// class Stack {
+//   constructor() {
+//     this.data = [];
+//   }
+
+//   push(val) {
+//     this.data.push(val);
+//   }
+
+//   pop() {
+//     return this.data.pop();
+//   }
+
+//   peek() {
+//     return this.data[this.data.length - 1];
+//   }
+// }
 
 module.exports = Stack;
