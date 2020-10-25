@@ -1,5 +1,5 @@
 // --- Directions
-// Implement a Queue datastructure using two stacks.
+// Implement a Queue data structure using two stacks.
 // *Do not* create an array inside of the 'Queue' class.
 // Queue should implement the methods 'add', 'remove', and 'peek'.
 // For a reminder on what each method does, look back
@@ -14,43 +14,85 @@
 
 const Stack = require('./stack');
 
+// MINE
 class Queue {
   constructor() {
     this.s1 = new Stack();
     this.s2 = new Stack();
   }
 
+  //          shift    push
+  // queue --> [1, 2, 3]
+  //                push
+  // s1 --> [1, 2, 3]
+  //                pop
+  // s2 --> [3, 2, 1]
+
   add(val) {
     this.s1.push(val);
   }
 
   remove() {
-    while (this.s1.data.length !== 0) {
+    while (this.s1.data.length) {
       this.s2.push(this.s1.pop());
     }
-
-    const popped = this.s2.pop();
-
-    while (this.s2.data.length !== 0) {
+    const removed = this.s2.pop();
+    while (this.s2.data.length) {
       this.s1.push(this.s2.pop());
     }
-
-    return popped;
+    return removed;
   }
 
   peek() {
-    while (this.s1.data.length !== 0) {
+    while (this.s1.data.length) {
       this.s2.push(this.s1.pop());
     }
-
-    const peek = this.s2.peek();
-
-    while (this.s2.data.length !== 0) {
+    const pk = this.s2.peek();
+    while (this.s2.data.length) {
       this.s1.push(this.s2.pop());
     }
-
-    return peek;
+    return pk;
   }
 }
+
+// ANSWER
+// class Queue {
+//   constructor() {
+//     this.s1 = new Stack();
+//     this.s2 = new Stack();
+//   }
+
+//   add(val) {
+//     this.s1.push(val);
+//   }
+
+//   remove() {
+//     while (this.s1.peek()) {
+//       this.s2.push(this.s1.pop());
+//     }
+
+//     const popped = this.s2.pop();
+
+//     while (this.s2.peek()) {
+//       this.s1.push(this.s2.pop());
+//     }
+
+//     return popped;
+//   }
+
+//   peek() {
+//     while (this.s1.peek()) {
+//       this.s2.push(this.s1.pop());
+//     }
+
+//     const peek = this.s2.peek();
+
+//     while (this.s2.peek()) {
+//       this.s1.push(this.s2.pop());
+//     }
+
+//     return peek;
+//   }
+// }
 
 module.exports = Queue;
