@@ -49,6 +49,10 @@ class LinkedList {
     }
     return node;
   }
+
+  clear() {
+    this.head = null;
+  }
 }
 
 // ANSWER
