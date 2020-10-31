@@ -53,6 +53,11 @@ class LinkedList {
   clear() {
     this.head = null;
   }
+
+  removeFirst() {
+    if (!this.head) return undefined;
+    this.head = this.head.next;
+  }
 }
 
 // ANSWER
