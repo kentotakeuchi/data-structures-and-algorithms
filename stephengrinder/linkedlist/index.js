@@ -58,6 +58,21 @@ class LinkedList {
     if (!this.head) return undefined;
     this.head = this.head.next;
   }
+
+  removeLast() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+    let prev = this.head;
+    let cur = prev.next;
+    while (cur.next) {
+      prev = cur;
+      cur = cur.next;
+    }
+    prev.next = null;
+  }
 }
 
 // ANSWER
