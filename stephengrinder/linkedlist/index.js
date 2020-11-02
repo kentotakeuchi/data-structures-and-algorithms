@@ -73,6 +73,16 @@ class LinkedList {
     }
     prev.next = null;
   }
+
+  insertLast(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    const lastNode = this.getLast();
+    lastNode.next = newNode;
+  }
 }
 
 // ANSWER
