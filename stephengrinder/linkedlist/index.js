@@ -83,6 +83,15 @@ class LinkedList {
     const lastNode = this.getLast();
     lastNode.next = newNode;
   }
+
+  getAt(index) {
+    if (index < 0 || index >= this.size()) return null;
+    let node = this.head;
+    for (let i = 0; i < index; i++) {
+      node = node.next;
+    }
+    return node;
+  }
 }
 
 // ANSWER
