@@ -105,9 +105,22 @@ class LinkedList {
     }
     prev.next = prev.next.next;
   }
+
+  insertAt(data, index) {
+    const newNode = new Node(data);
+    if (!this.head) this.head = newNode;
+    if (index === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+    const previous = this.getAt(index - 1) || this.getLast();
+    const node = new Node(data, previous.next);
+    previous.next = node;
+  }
 }
 
-// ANSWER
+// ANSWER2
 // class Node {
 //   constructor(data, next = null) {
 //     this.data = data;
