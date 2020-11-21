@@ -10,10 +10,11 @@
 // on the tree class.  Each method should accept a
 // function that gets called with each element in the tree
 
+// MINE
 class Node {
-  constructor(data) {
+  constructor(data, children = []) {
     this.data = data;
-    this.children = [];
+    this.children = children;
   }
 
   add(data) {
@@ -25,28 +26,44 @@ class Node {
   }
 }
 
-class Tree {
-  constructor() {
-    this.root = null;
-  }
+// ANSWER
+// class Node {
+//   constructor(data) {
+//     this.data = data;
+//     this.children = [];
+//   }
 
-  traverseBF(fn) {
-    const arr = [this.root];
-    while (arr.length) {
-      const node = arr.shift();
-      arr.push(...node.children);
-      fn(node);
-    }
-  }
+//   add(data) {
+//     this.children.push(new Node(data));
+//   }
 
-  traverseDF(fn) {
-    const arr = [this.root];
-    while (arr.length) {
-      const node = arr.shift();
-      arr.unshift(...node.children);
-      fn(node);
-    }
-  }
-}
+//   remove(data) {
+//     this.children = this.children.filter((child) => child.data !== data);
+//   }
+// }
 
-module.exports = { Tree, Node };
+// class Tree {
+//   constructor() {
+//     this.root = null;
+//   }
+
+//   traverseBF(fn) {
+//     const arr = [this.root];
+//     while (arr.length) {
+//       const node = arr.shift();
+//       arr.push(...node.children);
+//       fn(node);
+//     }
+//   }
+
+//   traverseDF(fn) {
+//     const arr = [this.root];
+//     while (arr.length) {
+//       const node = arr.shift();
+//       arr.unshift(...node.children);
+//       fn(node);
+//     }
+//   }
+// }
+
+module.exports = { /*Tree,*/ Node };
