@@ -26,6 +26,12 @@ class Node {
   }
 }
 
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+}
+
 // ANSWER
 // class Node {
 //   constructor(data) {
