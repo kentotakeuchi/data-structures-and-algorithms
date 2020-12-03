@@ -12,6 +12,25 @@ function bubbleSort(arr) {
   return arr;
 }
 
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let idxOfMin = i;
+    let min = arr[i];
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (min > arr[j]) {
+        min = arr[j];
+        idxOfMin = j;
+      }
+    }
+    if (idxOfMin !== i) {
+      [arr[i], arr[idxOfMin]] = [arr[idxOfMin], arr[i]];
+    }
+  }
+
+  return arr;
+}
+
 // ANSWER
 // function bubbleSort(arr) {
 //   for (let i = 0; i < arr.length; i++) {
@@ -57,4 +76,4 @@ function bubbleSort(arr) {
 //   return [...results, ...left, ...right];
 // }
 
-module.exports = { bubbleSort /*selectionSort, mergeSort, merge*/ };
+module.exports = { bubbleSort, selectionSort /*mergeSort, merge*/ };
