@@ -8,8 +8,18 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-function chunk(array, size) {}
+// MINE
+function chunk(array, size) {
+  const results = [];
 
+  for (let i = 0; i < array.length; i += size) {
+    results.push(array.slice(i, i + size));
+  }
+
+  return results;
+}
+
+// ANSWER
 // function chunk(array, size) {
 //   const chunked = [];
 //   for (let element of array) {
