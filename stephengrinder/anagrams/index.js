@@ -13,14 +13,12 @@ function anagrams(stringA, stringB) {
 
   const mapA = {};
   const mapB = {};
-  const re = /[^\w]/g;
 
-  for (const char of stringA.replace(re, '').toLowerCase()) {
+  for (const char of stringA.replace(/[^\w]/g, '').toLowerCase()) {
     mapA[char] = mapA[char] ? mapA[char]++ : 1;
   }
-  console.log(stringA.replace(re, '').toLowerCase());
 
-  for (const char of stringB.replace(re, '').toLowerCase()) {
+  for (const char of stringB.replace(/[^\w]/g, '').toLowerCase()) {
     mapB[char] = mapB[char] ? mapB[char]++ : 1;
   }
 
