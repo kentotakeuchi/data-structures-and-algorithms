@@ -16,30 +16,44 @@
 
 // MINE: ITERATION
 // function pyramid(n) {
-//   // length of row = 2n - 1
-//   const mid = Math.floor((2 * n - 1) / 2);
+//   const colLen = n * 2 - 1;
+//   const mid = Math.floor(colLen / 2);
 
 //   for (let row = 0; row < n; row++) {
 //     let level = '';
 
-//     for (let col = 0; col < 2 * n - 1; col++) {}
+//     for (let col = 0; col < colLen; col++) {
+//       if (mid - row <= col && col <= mid + row) {
+//         level += '#';
+//       } else {
+//         level += ' ';
+//       }
+//     }
+
+//     console.log(level);
 //   }
 // }
 
 // MINE: RECURSIVE
 function pyramid(n, row = 0, level = '') {
-  if (row === n) return;
+  if (row >= n) return;
 
-  if (level.length === 2 * n - 1) {
+  const colLen = n * 2 - 1;
+  const mid = Math.floor(colLen / 2);
+
+  if (level.length === colLen) {
     console.log(level);
     pyramid(n, ++row);
     return;
   }
 
-  const mid = Math.floor((2 * n - 1) / 2);
-  if (mid - row <= level.length && mid + row >= level.length)
-    pyramid(n, row, level + '#');
-  else pyramid(n, row, level + ' ');
+  let add;
+  if (mid - row <= level.length && level.length <= mid + row) {
+    add = '#';
+  } else {
+    add = ' ';
+  }
+  pyramid(n, row, (level += add));
 }
 
 // ANSWER: RECURSIVE
