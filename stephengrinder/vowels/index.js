@@ -9,11 +9,11 @@
 
 // MINE: ITERATION
 // function vowels(str) {
-//   const vowels = ['a', 'e', 'i', 'o', 'u'];
+//   const vwls = ['a', 'e', 'i', 'o', 'u'];
 //   let count = 0;
 
 //   for (const char of str.toLowerCase()) {
-//     if (vowels.includes(char)) {
+//     if (vwls.includes(char)) {
 //       ++count;
 //     }
 //   }
@@ -22,7 +22,10 @@
 // }
 
 // MINE: REGEX
-function vowels(str) {}
+function vowels(str) {
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+}
 
 // ANSWER: ITERATION
 // function vowels(str) {
