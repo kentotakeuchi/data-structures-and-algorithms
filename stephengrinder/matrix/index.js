@@ -17,43 +17,43 @@
 
 // MINE
 function matrix(n) {
-  const results = [];
-
-  // results = [[], [], []] if n=3
-  for (let i = 0; i < n; i++) {
-    results.push([]);
-  }
+  // create 2d array
+  const results = Array.from(Array(n), () => Array(n).fill(0));
 
   let count = 1;
-  let top = 0; // row
-  let left = 0; // col
-  let bottom = n - 1; // row
-  let right = n - 1; // col
+  let top = 0;
+  let btm = n - 1;
+  let left = 0;
+  let right = n - 1;
 
-  while (left <= right && top <= bottom) {
+  while (top <= btm && left <= right) {
+    // top
     for (let i = left; i <= right; i++) {
       results[top][i] = count;
-      count++;
+      ++count;
     }
-    top++;
+    ++top;
 
-    for (let i = top; i <= bottom; i++) {
+    // right
+    for (let i = top; i <= btm; i++) {
       results[i][right] = count;
-      count++;
+      ++count;
     }
-    right--;
+    --right;
 
+    // bottom
     for (let i = right; i >= left; i--) {
-      results[bottom][i] = count;
-      count++;
+      results[btm][i] = count;
+      ++count;
     }
-    bottom--;
+    --btm;
 
-    for (let i = bottom; i >= top; i--) {
+    // left
+    for (let i = btm; i >= top; i--) {
       results[i][left] = count;
-      count++;
+      ++count;
     }
-    left++;
+    ++left;
   }
 
   return results;
