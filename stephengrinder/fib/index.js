@@ -10,11 +10,18 @@
 
 // MINE: ITERATIVE
 // function fib(n) {
+//   // base case
+//   if (n <= 0) return 0;
+//   if (n <= 2) return 1;
+
+//   // result
 //   const results = [0, 1];
 
 //   for (let i = 2; i <= n; i++) {
-//     const sum = results[i - 1] + results[i - 2];
-//     results.push(sum);
+//     let a = results[i - 1];
+//     let b = results[i - 2];
+
+//     results.push(a + b);
 //   }
 
 //   return results[n];
@@ -22,9 +29,10 @@
 
 // MINE: RECURSIVE
 // function fib(n) {
-//   if (n < 2) return n;
+//   if (n === 0) return 0;
+//   if (n <= 2) return 1;
 
-//   return fib(n - 1) + fib(n - 2);
+//   return fib(n - 2) + fib(n - 1);
 // }
 
 // MINE: RECURSIVE + MEMOIZATION
@@ -34,7 +42,7 @@ function slowFib(n) {
   return fib(n - 1) + fib(n - 2);
 }
 
-function memoize(fn) {
+function memoization(fn) {
   const cache = {};
 
   return function (...args) {
@@ -48,7 +56,7 @@ function memoize(fn) {
   };
 }
 
-const fib = memoize(slowFib);
+const fib = memoization(slowFib);
 
 // ANSWER: ITERATIVE
 // function fib(n) {
