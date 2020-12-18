@@ -24,15 +24,24 @@
 
 const Queue = require('./queue');
 
+// MINE
 function weave(sourceOne, sourceTwo) {
-  const queue = new Queue();
+  const q = new Queue();
 
-  while (sourceOne.data.length || sourceTwo.data.length) {
-    queue.add(sourceOne.remove());
-    queue.add(sourceTwo.remove());
+  const q1 = sourceOne;
+  const q2 = sourceTwo;
+
+  while (q1.data.length || q2.data.length) {
+    if (q1.data.length) {
+      q.add(q1.remove());
+    }
+    if (q2.data.length) {
+      q.add(q2.remove());
+    }
   }
 
-  return queue;
+  console.log({ q });
+  return q;
 }
 
 // ANSWER
