@@ -21,13 +21,6 @@ class Queue {
     this.s2 = new Stack();
   }
 
-  //          shift    push
-  // queue --> [1, 2, 3]
-  //                push
-  // s1 --> [1, 2, 3]
-  //                pop
-  // s2 --> [3, 2, 1]
-
   add(val) {
     this.s1.push(val);
   }
@@ -36,10 +29,13 @@ class Queue {
     while (this.s1.data.length) {
       this.s2.push(this.s1.pop());
     }
+
     const removed = this.s2.pop();
+
     while (this.s2.data.length) {
       this.s1.push(this.s2.pop());
     }
+
     return removed;
   }
 
@@ -47,11 +43,14 @@ class Queue {
     while (this.s1.data.length) {
       this.s2.push(this.s1.pop());
     }
-    const pk = this.s2.peek();
+
+    const peek = this.s2.peek();
+
     while (this.s2.data.length) {
       this.s1.push(this.s2.pop());
     }
-    return pk;
+
+    return peek;
   }
 }
 
