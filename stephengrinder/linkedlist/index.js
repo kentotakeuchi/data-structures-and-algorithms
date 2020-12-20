@@ -30,6 +30,48 @@ class LinkedList {
 
     return count;
   }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    let node = this.head;
+
+    while (node.next) {
+      node = node.next;
+    }
+
+    return node;
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) return null;
+
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      this.removeFirst();
+      return;
+    }
+
+    let prev = this.head;
+    let cur = prev.next;
+    while (cur) {
+      if (!cur.next) {
+        prev.next = null;
+      }
+      prev = prev.next;
+      cur = cur.next;
+    }
+  }
 }
 
 // ANSWER2
