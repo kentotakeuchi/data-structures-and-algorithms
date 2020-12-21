@@ -36,13 +36,17 @@ class LinkedList {
   }
 
   getLast() {
-    let node = this.head;
-
-    while (node.next) {
-      node = node.next;
+    if (!this.head) {
+      return null;
     }
 
-    return node;
+    let node = this.head;
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
+      node = node.next;
+    }
   }
 
   clear() {
@@ -71,6 +75,39 @@ class LinkedList {
       prev = prev.next;
       cur = cur.next;
     }
+  }
+
+  insertLast(val) {
+    const last = this.getLast();
+
+    if (last) {
+      // There are some existing nodes in our chain
+      last.next = new Node(val);
+    } else {
+      // The chain is empty!
+      this.head = new Node(val);
+    }
+  }
+
+  getAt(idx) {
+    // base case
+    if (!this.head) {
+      return null;
+    }
+    if (idx < 0 || this.size() < idx) {
+      return null;
+    }
+
+    let node = this.head;
+
+    let count = 1;
+    while (count <= idx) {
+      node = node.next;
+      ++count;
+    }
+
+    console.log({ node });
+    return node;
   }
 }
 
