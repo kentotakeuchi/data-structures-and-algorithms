@@ -90,24 +90,34 @@ class LinkedList {
   }
 
   getAt(idx) {
-    // base case
-    if (!this.head) {
-      return null;
-    }
-    if (idx < 0 || this.size() < idx) {
-      return null;
-    }
-
+    let counter = 0;
     let node = this.head;
+    while (node) {
+      if (counter === idx) {
+        return node;
+      }
 
-    let count = 1;
-    while (count <= idx) {
+      counter++;
       node = node.next;
-      ++count;
+    }
+    return null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      return;
     }
 
-    console.log({ node });
-    return node;
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    const previous = this.getAt(index - 1);
+    if (!previous || !previous.next) {
+      return;
+    }
+    previous.next = previous.next.next;
   }
 }
 
