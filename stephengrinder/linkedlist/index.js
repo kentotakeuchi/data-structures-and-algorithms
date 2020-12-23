@@ -119,6 +119,26 @@ class LinkedList {
     }
     previous.next = previous.next.next;
   }
+
+  insertAt(val, idx) {
+    // base case: if list is empty or index is 0
+    if (!this.head || idx === 0) {
+      this.insertFirst(val);
+      return;
+    }
+
+    // get previous node of target
+    let prev = this.getAt(idx - 1);
+
+    if (!prev) {
+      this.insertLast(val);
+      return;
+    }
+
+    const newNode = new Node(val, prev.next);
+
+    prev.next = newNode;
+  }
 }
 
 // ANSWER2
