@@ -24,6 +24,7 @@ function circular(list) {
       return true;
     }
   }
+
   return false;
 }
 
