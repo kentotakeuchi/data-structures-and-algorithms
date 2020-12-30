@@ -12,7 +12,7 @@
 
 // MINE
 class Node {
-  constructor(data, children = []) {
+  constructor(data = 0, children = []) {
     this.data = data;
     this.children = children;
   }
@@ -26,31 +26,7 @@ class Node {
   }
 }
 
-class Tree {
-  constructor() {
-    this.root = null;
-  }
-
-  traverseBF(fn) {
-    const arr = [this.root];
-
-    while (arr.length) {
-      const node = arr.shift();
-      arr.push(...node.children);
-      fn(node);
-    }
-  }
-
-  traverseDF(fn) {
-    const arr = [this.root];
-
-    while (arr.length) {
-      const node = arr.shift();
-      arr.unshift(...node.children);
-      fn(node);
-    }
-  }
-}
+class Tree {}
 
 // ANSWER
 // class Node {
