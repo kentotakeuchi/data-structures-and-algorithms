@@ -15,20 +15,18 @@
 function levelWidth(root) {
   if (!root) return [];
 
-  const results = [];
-  const arr = [root, 'end'];
-  let count = 0;
+  const results = [0];
+  const stack = [root, 'end'];
 
-  while (arr.length > 1) {
-    const node = arr.shift();
+  while (stack.length > 1) {
+    const node = stack.shift();
 
     if (node === 'end') {
-      results.push(count);
-      count = 0;
-      arr.push(node);
+      results.push(0);
+      stack.push(node);
     } else {
-      arr.push(...node.children);
-      count++;
+      stack.push(...node.children);
+      ++results[results.length - 1];
     }
   }
 
