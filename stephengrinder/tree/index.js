@@ -26,7 +26,31 @@ class Node {
   }
 }
 
-class Tree {}
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+
+  traverseBF(fn) {
+    const q = [this.root];
+
+    while (q.length) {
+      let node = q.shift();
+      q.push(...node.children);
+      fn(node);
+    }
+  }
+
+  traverseDF(fn) {
+    const stack = [this.root];
+
+    while (stack.length) {
+      const node = stack.shift();
+      stack.unshift(...node.children);
+      fn(node);
+    }
+  }
+}
 
 // ANSWER
 // class Node {
