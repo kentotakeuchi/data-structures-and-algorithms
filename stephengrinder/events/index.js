@@ -18,9 +18,9 @@ class Events {
 
   trigger(eventName) {
     if (this.events[eventName]) {
-      for (const cb of this.events[eventName]) {
+      this.events[eventName].forEach((cb) => {
         cb();
-      }
+      });
     }
   }
 
