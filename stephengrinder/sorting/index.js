@@ -5,47 +5,19 @@
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-    }
-  }
-
-  return arr;
-}
-
-function selectionSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let idxOfMin = i;
-    let min = arr[i];
-
-    for (let j = i + 1; j < arr.length; j++) {
-      if (min > arr[j]) {
-        min = arr[j];
-        idxOfMin = j;
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
-    if (idxOfMin !== i) {
-      [arr[i], arr[idxOfMin]] = [arr[idxOfMin], arr[i]];
-    }
   }
 
   return arr;
 }
 
+function selectionSort(arr) {}
+
 function mergeSort(arr) {}
-
-function merge(left, right) {
-  const results = [];
-
-  while (left.length && right.length) {
-    if (left[0] < right[0]) {
-      results.push(left.shift());
-    } else {
-      results.push(right.shift());
-    }
-  }
-
-  return [...results, ...left, ...right];
-}
+function merge() {}
 
 // ANSWER
 // function bubbleSort(arr) {
