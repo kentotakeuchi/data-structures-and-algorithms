@@ -8,11 +8,25 @@
 
 // MINE
 function reverse(str) {
-  let reversed = '';
+  // return forLoop(str);
+  // return reverseFunc(str);
+  return reduceFunc(str);
+}
+
+function forLoop(str) {
+  let result = '';
   for (const char of str) {
-    reversed = char + reversed;
+    result = char + result;
   }
-  return reversed;
+  return result;
+}
+
+function reverseFunc(str) {
+  return str.split('').reverse().join('');
+}
+
+function reduceFunc(str) {
+  return str.split('').reduce((acc, cur) => cur + acc, '');
 }
 
 // ANSWER 1: FOR LOOP
