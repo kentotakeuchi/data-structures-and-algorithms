@@ -9,9 +9,27 @@
 
 // MINE
 function palindrome(str) {
-  // const reversed = str.split('').reverse().join('');
-  const reversed = str.split('').reduce((acc, cur) => cur + acc, '');
-  return str === reversed;
+  // return reverseFunc(str);
+  return twoPointer(str);
+}
+
+function reverseFunc(str) {
+  return str === str.split('').reverse().join('');
+}
+
+function twoPointer(str) {
+  let start = 0;
+  let end = str.length - 1;
+
+  while (start <= end) {
+    if (str[start] !== str[end]) {
+      return false;
+    }
+    ++start;
+    --end;
+  }
+
+  return true;
 }
 
 // ANSWER
