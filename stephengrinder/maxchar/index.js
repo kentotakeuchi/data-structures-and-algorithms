@@ -7,17 +7,22 @@
 
 // MINE
 function maxChar(str) {
-  const map = {};
-  for (const char of str) {
-    map[char] = map[char] ? map[char]++ : 1;
+  const map = new Map();
+
+  for (let char of str) {
+    if (map.has(char)) {
+      map.set(char, map.get(char) + 1);
+    } else {
+      map.set(char, 1);
+    }
   }
 
   let max = 0;
-  let result;
-  for (const key in map) {
-    if (map[key] > max) {
+  let result = '';
+  for (let [key, value] of map) {
+    if (max < value) {
+      max = value;
       result = key;
-      max = map[key];
     }
   }
 
