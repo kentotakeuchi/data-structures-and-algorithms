@@ -13,21 +13,24 @@
 //   buzz
 
 function fizzBuzz(n) {
-  for (let i = 1; i <= n; i++) {
+  let count = 1;
+  while (n) {
     switch (true) {
-      case i % 3 === 0 && i % 5 === 0:
+      case count % 3 === 0 && count % 5 === 0:
         console.log('fizzbuzz');
         break;
-      case i % 3 === 0:
+      case count % 3 === 0:
         console.log('fizz');
         break;
-      case i % 5 === 0:
+      case count % 5 === 0:
         console.log('buzz');
         break;
       default:
-        console.log(i);
+        console.log(count);
         break;
     }
+    --n;
+    ++count;
   }
 }
 
