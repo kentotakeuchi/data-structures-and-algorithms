@@ -10,10 +10,33 @@
 
 // MINE
 function chunk(array, size) {
+  // return useSliceFunc(array, size);
+  return nonBuiltinFunc(array, size);
+}
+
+function useSliceFunc(arr, size) {
+  const results = [];
+  let i = 0;
+
+  while (i < arr.length) {
+    results.push(arr.slice(i, i + size));
+    i += size;
+  }
+
+  return results;
+}
+
+function nonBuiltinFunc(arr, size) {
   const results = [];
 
-  for (let i = 0; i < array.length; i += size) {
-    results.push(array.slice(i, i + size));
+  for (let el of arr) {
+    const last = results[results.length - 1];
+
+    if (!last || last.length === size) {
+      results.push([el]);
+    } else {
+      last.push(el);
+    }
   }
 
   return results;
