@@ -1,5 +1,5 @@
 // --- Directions
-// Check to see if two provided strings are anagrams of eachother.
+// Check to see if two provided strings are anagrams of each other.
 // One string is an anagram of another if it uses the same characters
 // in the same quantity. Only consider characters, not spaces
 // or punctuation.  Consider capital letters to be the same as lower case
@@ -9,24 +9,36 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  if (stringA.length !== stringB.length) return false;
+  // return s1(stringA, stringB);
+  return s2(stringA, stringB);
+}
 
-  const mapA = {};
-  const mapB = {};
+function s1(str1, str2) {
+  const map = new Map();
 
-  for (const char of stringA.replace(/[^\w]/g, '').toLowerCase()) {
-    mapA[char] = mapA[char] ? mapA[char]++ : 1;
+  for (let char of str1.replace(/[^\w]/g, '').toLowerCase()) {
+    if (map.has(char)) {
+      map.set(char, map.get(char) + 1);
+    } else {
+      map.set(char, 1);
+    }
   }
 
-  for (const char of stringB.replace(/[^\w]/g, '').toLowerCase()) {
-    mapB[char] = mapB[char] ? mapB[char]++ : 1;
-  }
-
-  for (const key in mapA) {
-    if (mapA[key] !== mapB[key]) return false;
+  for (let char of str2.replace(/[^\w]/g, '').toLowerCase()) {
+    if (!map.has(char)) {
+      return false;
+    }
   }
 
   return true;
+}
+
+function s2(str1, str2) {
+  return cleanString(str1) === cleanString(str2);
+}
+
+function cleanString(str) {
+  return str.replace(/[^\w]/, '').toLowerCase().split('').sort().join('');
 }
 
 module.exports = anagrams;
