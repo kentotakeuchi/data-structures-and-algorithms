@@ -18,37 +18,39 @@
 //       '####'
 
 // MINE
-// function steps(n) {
-//   for (let i = 0; i < n; i++) {
-//     let step = '';
+function steps(n) {
+  // return s1(n);
+  return s2(n);
+}
 
-//     for (let j = 0; j < n; j++) {
-//       if (j <= i) {
-//         step += '#';
-//       } else {
-//         step += ' ';
-//       }
-//     }
+function s1(n) {
+  for (let row = 0; row < n; row++) {
+    let step = '';
+    for (let col = 0; col < n; col++) {
+      if (col <= row) {
+        step += '#';
+      } else {
+        step += ' ';
+      }
+    }
+    console.log(step);
+  }
+}
 
-//     console.log(step);
-//   }
-// }
-
-function steps(n, row = 0, step = '') {
+function s2(n, row = 0, step = '') {
   if (n === row) return;
 
   if (step.length === n) {
     console.log(step);
-    steps(n, ++row);
+    s2(n, row + 1, '');
     return;
   }
 
   if (step.length <= row) {
-    step += '#';
+    s2(n, row, (step += '#'));
   } else {
-    step += ' ';
+    s2(n, row, (step += ' '));
   }
-  steps(n, row, step);
 }
 
 // ANSWER
