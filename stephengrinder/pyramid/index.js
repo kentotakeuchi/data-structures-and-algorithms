@@ -14,46 +14,43 @@
 //       ' ### '
 //       '#####'
 
-// MINE: ITERATION
-// function pyramid(n) {
-//   const colLen = n * 2 - 1;
-//   const mid = Math.floor(colLen / 2);
+function pyramid(n) {
+  // return iterative(n);
+  return recursive(n);
+}
 
-//   for (let row = 0; row < n; row++) {
-//     let level = '';
+function iterative(n) {
+  const mid = Math.floor((2 * n - 1) / 2);
 
-//     for (let col = 0; col < colLen; col++) {
-//       if (mid - row <= col && col <= mid + row) {
-//         level += '#';
-//       } else {
-//         level += ' ';
-//       }
-//     }
-
-//     console.log(level);
-//   }
-// }
-
-// MINE: RECURSIVE
-function pyramid(n, row = 0, level = '') {
-  if (row >= n) return;
-
-  const colLen = n * 2 - 1;
-  const mid = Math.floor(colLen / 2);
-
-  if (level.length === colLen) {
+  for (let row = 0; row < n; row++) {
+    let level = '';
+    for (let col = 0; col < 2 * n - 1; col++) {
+      if (mid - row <= col && col <= mid + row) {
+        level += '#';
+      } else {
+        level += ' ';
+      }
+    }
     console.log(level);
-    pyramid(n, ++row);
+  }
+}
+
+function recursive(n, row = 0, level = '') {
+  if (row === n) return;
+
+  const mid = Math.floor((2 * n - 1) / 2);
+
+  if (level.length === 2 * n - 1) {
+    console.log(level);
+    recursive(n, row + 1);
     return;
   }
 
-  let add;
   if (mid - row <= level.length && level.length <= mid + row) {
-    add = '#';
+    recursive(n, row, (level += '#'));
   } else {
-    add = ' ';
+    recursive(n, row, (level += ' '));
   }
-  pyramid(n, row, (level += add));
 }
 
 // ANSWER: RECURSIVE
