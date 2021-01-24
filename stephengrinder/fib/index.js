@@ -8,44 +8,40 @@
 // Example:
 //   fib(4) === 3
 
-// MINE: ITERATIVE
-// function fib(n) {
-//   // base case
-//   if (n <= 0) return 0;
-//   if (n <= 2) return 1;
+function fib(n) {
+  // return iterative(n);
+  // return recursive(n);
+  return recursiveWithMemo(n);
+}
 
-//   // result
-//   const results = [0, 1];
+function iterative(n) {
+  if (n < 2) return n;
 
-//   for (let i = 2; i <= n; i++) {
-//     let a = results[i - 1];
-//     let b = results[i - 2];
+  const arr = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    arr.push(arr[i - 2] + arr[i - 1]);
+  }
+  console.log({ arr });
+  return arr[n];
+}
 
-//     results.push(a + b);
-//   }
+function recursive(n) {
+  if (n < 2) return n;
 
-//   return results[n];
-// }
-
-// MINE: RECURSIVE
-// function fib(n) {
-//   if (n === 0) return 0;
-//   if (n <= 2) return 1;
-
-//   return fib(n - 2) + fib(n - 1);
-// }
+  return recursive(n - 2) + recursive(n - 1);
+}
 
 // MINE: RECURSIVE + MEMOIZATION
 function slowFib(n) {
   if (n < 2) return n;
-
-  return fib(n - 1) + fib(n - 2);
+  return recursiveWithMemo(n - 2) + recursiveWithMemo(n - 1);
 }
 
 function memoization(fn) {
   const cache = {};
 
   return function (...args) {
+    // console.log({ args });
     if (cache[args]) {
       return cache[args];
     }
@@ -56,7 +52,7 @@ function memoization(fn) {
   };
 }
 
-const fib = memoization(slowFib);
+const recursiveWithMemo = memoization(slowFib);
 
 // ANSWER: ITERATIVE
 // function fib(n) {
