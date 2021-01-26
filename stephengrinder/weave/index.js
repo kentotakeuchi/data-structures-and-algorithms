@@ -3,7 +3,7 @@
 // 2) Implement the 'weave' function.  Weave
 // receives two queues as arguments and combines the
 // contents of each into a new, third queue.
-// The third queue should contain the *alterating* content
+// The third queue should contain the *alternating* content
 // of the two queues.  The function should handle
 // queues of different lengths without inserting
 // 'undefined' into the new one.
@@ -28,19 +28,11 @@ const Queue = require('./queue');
 function weave(sourceOne, sourceTwo) {
   const q = new Queue();
 
-  const q1 = sourceOne;
-  const q2 = sourceTwo;
-
-  while (q1.data.length || q2.data.length) {
-    if (q1.data.length) {
-      q.add(q1.remove());
-    }
-    if (q2.data.length) {
-      q.add(q2.remove());
-    }
+  while (sourceOne.data.length || sourceTwo.data.length) {
+    if (sourceOne.peek()) q.add(sourceOne.remove());
+    if (sourceTwo.peek()) q.add(sourceTwo.remove());
   }
 
-  console.log({ q });
   return q;
 }
 
