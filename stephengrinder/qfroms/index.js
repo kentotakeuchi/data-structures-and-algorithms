@@ -26,31 +26,25 @@ class Queue {
   }
 
   remove() {
-    while (this.s1.data.length) {
+    while (this.s1.peek()) {
       this.s2.push(this.s1.pop());
     }
-
     const removed = this.s2.pop();
-
-    while (this.s2.data.length) {
+    while (this.s2.peek()) {
       this.s1.push(this.s2.pop());
     }
-
     return removed;
   }
 
   peek() {
-    while (this.s1.data.length) {
+    while (this.s1.peek()) {
       this.s2.push(this.s1.pop());
     }
-
-    const peek = this.s2.peek();
-
-    while (this.s2.data.length) {
+    const peeked = this.s2.peek();
+    while (this.s2.peek()) {
       this.s1.push(this.s2.pop());
     }
-
-    return peek;
+    return peeked;
   }
 }
 
