@@ -45,6 +45,26 @@ class LinkedList {
   clear() {
     this.head = null;
   }
+
+  removeFirst() {
+    if (!this.head) return;
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+    let prev = this.head;
+    let cur = this.head.next;
+    while (cur.next) {
+      prev = prev.next;
+      cur = cur.next;
+    }
+    prev.next = null;
+  }
 }
 
 // ANSWER2
