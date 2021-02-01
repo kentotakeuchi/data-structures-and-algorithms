@@ -65,6 +65,26 @@ class LinkedList {
     }
     prev.next = null;
   }
+
+  insertLast(val) {
+    const tail = this.getLast();
+    if (tail) {
+      tail.next = new Node(val);
+    } else {
+      this.head = new Node(val);
+    }
+  }
+
+  getAt(idx) {
+    if (!this.head) return null;
+    if (idx < 0 || this.size() <= idx) return;
+    let node = this.head;
+    while (idx) {
+      node = node.next;
+      --idx;
+    }
+    return node;
+  }
 }
 
 // ANSWER2
