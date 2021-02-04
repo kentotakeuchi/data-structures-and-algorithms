@@ -100,6 +100,19 @@ class LinkedList {
     }
     prev.next = prev.next.next;
   }
+
+  insertAt(val, idx) {
+    if (!this.head || idx === 0) {
+      this.insertFirst(val);
+      return;
+    }
+    const prev = this.getAt(idx - 1);
+    if (!prev || !prev.next) {
+      this.insertLast(val);
+      return;
+    }
+    prev.next = new Node(val, prev.next);
+  }
 }
 
 // ANSWER2
