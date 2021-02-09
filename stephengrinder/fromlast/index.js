@@ -13,20 +13,25 @@
 
 // MINE
 function fromLast(list, n) {
-  let slow = list.getFirst();
-  let fast = list.getFirst();
+  return s1(list, n);
+  // return s2(list, n);
+}
 
-  for (let i = 0; i < n; i++) {
+function s1(list, n) {
+  let slow = list.head;
+  let fast = list.head;
+  while (n) {
     fast = fast.next;
+    --n;
   }
-
   while (fast.next) {
     slow = slow.next;
     fast = fast.next;
   }
-
   return slow;
 }
+
+function s2(list, n) {}
 
 // function fromLast(list, n) {
 //   let slow = list.getFirst();
