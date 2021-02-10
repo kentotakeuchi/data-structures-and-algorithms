@@ -12,45 +12,21 @@
 
 // MINE
 class Node {
-  constructor(data = 0, children = []) {
+  constructor(data, children = []) {
     this.data = data;
     this.children = children;
   }
 
-  add(data) {
-    this.children.push(new Node(data));
+  add(val) {
+    this.children.push(new Node(val));
   }
 
-  remove(data) {
-    this.children = this.children.filter((child) => child.data !== data);
-  }
-}
-
-class Tree {
-  constructor() {
-    this.root = null;
-  }
-
-  traverseBF(fn) {
-    const q = [this.root];
-
-    while (q.length) {
-      let node = q.shift();
-      q.push(...node.children);
-      fn(node);
-    }
-  }
-
-  traverseDF(fn) {
-    const stack = [this.root];
-
-    while (stack.length) {
-      const node = stack.shift();
-      stack.unshift(...node.children);
-      fn(node);
-    }
+  remove(val) {
+    this.children = this.children.filter((node) => node.data !== val);
   }
 }
+
+class Tree {}
 
 // ANSWER
 // class Node {
