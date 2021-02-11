@@ -13,23 +13,22 @@
 
 // MINE..
 function levelWidth(root) {
-  if (!root) return [];
-
-  const results = [0];
-  const stack = [root, 'end'];
-
-  while (stack.length > 1) {
-    const node = stack.shift();
-
+  if (!root) return;
+  let count = 0;
+  const results = [];
+  const q = [root, 'end'];
+  while (q.length > 1) {
+    const node = q.shift();
     if (node === 'end') {
-      results.push(0);
-      stack.push(node);
-    } else {
-      stack.push(...node.children);
-      ++results[results.length - 1];
+      results.push(count);
+      count = 0;
+      q.push('end');
+      continue;
     }
+    count++;
+    q.push(...node.children);
   }
-
+  console.log({ results });
   return results;
 }
 
