@@ -7,19 +7,15 @@
 
 // MINE
 function validate(node, min = null, max = null) {
-  if (max && node.data > max) {
+  if (max && max < node.data) {
+    return false;
+  } else if (min && node.data < min) {
+    return false;
+  } else if (node.left && !validate(node.left, min, node.data)) {
+    return false;
+  } else if (node.right && !validate(node.right, node.data, max)) {
     return false;
   }
-  if (min && min > node.data) {
-    return false;
-  }
-  if (node.left && !validate(node.left, min, node.data)) {
-    return false;
-  }
-  if (node.right && !validate(node.right, node.data, max)) {
-    return false;
-  }
-
   return true;
 }
 
