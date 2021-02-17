@@ -11,14 +11,26 @@ function bubbleSort(arr) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
-        console.log({ arr });
       }
     }
   }
   return arr;
 }
 
-function selectionSort(arr) {}
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let idxMin = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[idxMin]) {
+        idxMin = j;
+      }
+    }
+    if (i !== idxMin) {
+      swap(arr, i, idxMin);
+    }
+  }
+  return arr;
+}
 
 function mergeSort(arr) {}
 
