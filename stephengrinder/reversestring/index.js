@@ -8,17 +8,17 @@
 
 // MINE
 function reverse(str) {
-  // return forLoop(str);
+  return forLoop(str);
   // return reverseFunc(str);
-  return reduceFunc(str);
+  // return reduceFunc(str);
 }
 
 function forLoop(str) {
-  let result = '';
-  for (const char of str) {
-    result = char + result;
+  let reversed = '';
+  for (let char of str) {
+    reversed = char + reversed;
   }
-  return result;
+  return reversed;
 }
 
 function reverseFunc(str) {
