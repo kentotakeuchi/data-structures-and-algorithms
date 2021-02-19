@@ -9,7 +9,7 @@
 
 // MINE
 function palindrome(str) {
-  // return reverseFunc(str);
+  return reverseFunc(str);
   return twoPointer(str);
 }
 
@@ -17,20 +17,7 @@ function reverseFunc(str) {
   return str === str.split('').reverse().join('');
 }
 
-function twoPointer(str) {
-  let start = 0;
-  let end = str.length - 1;
-
-  while (start <= end) {
-    if (str[start] !== str[end]) {
-      return false;
-    }
-    ++start;
-    --end;
-  }
-
-  return true;
-}
+function twoPointer(str) {}
 
 // ANSWER
 // function palindrome(str) {
