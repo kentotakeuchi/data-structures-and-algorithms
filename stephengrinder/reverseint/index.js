@@ -16,20 +16,20 @@ function reverseInt(n) {
 
 function s1(n) {
   const isNegative = n < 0;
-  console.log({ isNegative });
-
-  let reversed = Math.abs(n).toString().split('').reverse().join('');
-  console.log({ reversed });
-
-  return isNegative ? reversed * -1 : reversed * 1;
+  const reversed =
+    Math.abs(n)
+      .toString()
+      .split('')
+      .reduce((acc, cur) => cur + acc, '') * 1;
+  return isNegative ? reversed * -1 : reversed;
 }
 
 function s2(n) {
+  const isNegative = n < 0;
   const reversed = Math.abs(n)
     .toString()
     .split('')
     .reduce((acc, cur) => cur + acc, '');
-
   return reversed * Math.sign(n);
 }
 
