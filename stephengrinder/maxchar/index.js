@@ -8,7 +8,6 @@
 // MINE
 function maxChar(str) {
   const map = new Map();
-
   for (let char of str) {
     if (map.has(char)) {
       map.set(char, map.get(char) + 1);
@@ -20,8 +19,8 @@ function maxChar(str) {
   let max = 0;
   let result = '';
   for (let [key, value] of map) {
-    if (max < value) {
-      max = value;
+    max = Math.max(max, value);
+    if (max === value) {
       result = key;
     }
   }
