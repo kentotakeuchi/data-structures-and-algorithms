@@ -16,29 +16,24 @@ function chunk(array, size) {
 
 function useSliceFunc(arr, size) {
   const results = [];
-  let i = 0;
-
-  while (i < arr.length) {
+  for (let i = 0; i < arr.length; i += size) {
     results.push(arr.slice(i, i + size));
-    i += size;
   }
-
   return results;
 }
 
 function nonBuiltinFunc(arr, size) {
   const results = [];
-
-  for (let el of arr) {
-    const last = results[results.length - 1];
-
-    if (!last || last.length === size) {
-      results.push([el]);
+  let chunk = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (chunk.length === size) {
+      results.push(chunk);
+      chunk = [arr[i]];
     } else {
-      last.push(el);
+      chunk.push(arr[i]);
     }
   }
-
+  console.log({ results });
   return results;
 }
 
