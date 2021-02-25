@@ -15,8 +15,7 @@ function anagrams(stringA, stringB) {
 
 function s1(str1, str2) {
   const map = new Map();
-
-  for (let char of str1.replace(/[^\w]/g, '').toLowerCase()) {
+  for (let char of str1.toLowerCase().replace(/\W/g, '')) {
     if (map.has(char)) {
       map.set(char, map.get(char) + 1);
     } else {
@@ -24,10 +23,19 @@ function s1(str1, str2) {
     }
   }
 
-  for (let char of str2.replace(/[^\w]/g, '').toLowerCase()) {
-    if (!map.has(char)) {
-      return false;
+  const map2 = new Map();
+  for (let char of str2.toLowerCase().replace(/\W/g, '')) {
+    if (map2.has(char)) {
+      map2.set(char, map2.get(char) + 1);
+    } else {
+      map2.set(char, 1);
     }
+  }
+
+  if (map.size !== map2.size) return false;
+
+  for (let [key, val] of map) {
+    if (val !== map2.get(key)) return false;
   }
 
   return true;
@@ -38,7 +46,7 @@ function s2(str1, str2) {
 }
 
 function cleanString(str) {
-  return str.replace(/[^\w]/, '').toLowerCase().split('').sort().join('');
+  return str.replace(/\W/g, '').toLowerCase().split('').sort().join('');
 }
 
 module.exports = anagrams;
