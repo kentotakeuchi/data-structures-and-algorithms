@@ -17,40 +17,41 @@
 //       '### '
 //       '####'
 
+/**
+ *
+ * @param {number} n
+ * @return {void}
+ */
+
 // MINE
 function steps(n) {
-  // return s1(n);
-  return s2(n);
+  // return iterative(n);
+  return recursive(n);
 }
 
-function s1(n) {
-  for (let row = 0; row < n; row++) {
-    let step = '';
-    for (let col = 0; col < n; col++) {
-      if (col <= row) {
-        step += '#';
+function iterative(n) {
+  for (let i = 0; i < n; i++) {
+    let result = '';
+    for (let j = 0; j < n; j++) {
+      if (j <= i) {
+        result += '#';
       } else {
-        step += ' ';
+        result += ' ';
       }
     }
-    console.log(step);
+    console.log(result);
   }
 }
 
-function s2(n, row = 0, step = '') {
+function recursive(n, row = 0, step = '') {
   if (n === row) return;
-
-  if (step.length === n) {
+  if (n === step.length) {
     console.log(step);
-    s2(n, row + 1, '');
+    recursive(n, ++row, '');
     return;
   }
-
-  if (step.length <= row) {
-    s2(n, row, (step += '#'));
-  } else {
-    s2(n, row, (step += ' '));
-  }
+  const add = step.length <= row ? '#' : ' ';
+  recursive(n, row, (step += add));
 }
 
 // ANSWER
