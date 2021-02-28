@@ -14,17 +14,22 @@
 //       ' ### '
 //       '#####'
 
+/**
+ *
+ * @param {number} n
+ * @return {void}
+ */
+
 function pyramid(n) {
   // return iterative(n);
   return recursive(n);
 }
 
 function iterative(n) {
-  const mid = Math.floor((2 * n - 1) / 2);
-
+  const mid = Math.floor((n * 2 - 1) / 2);
   for (let row = 0; row < n; row++) {
     let level = '';
-    for (let col = 0; col < 2 * n - 1; col++) {
+    for (let col = 0; col < n * 2 - 1; col++) {
       if (mid - row <= col && col <= mid + row) {
         level += '#';
       } else {
@@ -37,20 +42,15 @@ function iterative(n) {
 
 function recursive(n, row = 0, level = '') {
   if (row === n) return;
-
-  const mid = Math.floor((2 * n - 1) / 2);
-
-  if (level.length === 2 * n - 1) {
+  if (level.length === n * 2 - 1) {
     console.log(level);
-    recursive(n, row + 1);
+    recursive(n, ++row);
     return;
   }
-
-  if (mid - row <= level.length && level.length <= mid + row) {
-    recursive(n, row, (level += '#'));
-  } else {
-    recursive(n, row, (level += ' '));
-  }
+  const mid = Math.floor((n * 2 - 1) / 2);
+  const add =
+    mid - row <= level.length && level.length <= mid + row ? '#' : ' ';
+  recursive(n, row, (level += add));
 }
 
 // ANSWER: RECURSIVE
