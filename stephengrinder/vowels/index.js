@@ -8,26 +8,23 @@
 //   vowels('Why?') --> 0
 
 function vowels(str) {
-  // return iterative(str);
+  return iterative(str);
   return regex(str);
 }
 
 function iterative(str) {
-  let count = 0;
   const vowels = ['a', 'e', 'i', 'o', 'u'];
-
+  let count = 0;
   for (let char of str.toLowerCase()) {
     if (vowels.includes(char)) {
-      ++count;
+      count++;
     }
   }
-
   return count;
 }
 
 function regex(str) {
-  const matches = str.match(/[aeiou]/gi);
-  return matches ? matches.length : 0;
+  return str.match(/[aeiou]/gi) ? str.match(/[aeiou]/gi).length : 0;
 }
 
 // ANSWER: ITERATION
