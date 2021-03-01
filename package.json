@@ -2,12 +2,7 @@
   "name": "daa",
   "version": "1.0.0",
   "description": "practice daa",
-  "main": "index.js",
   "dependencies": {},
   "devDependencies": {},
-  "scripts": {
-    "debug": "ndb ${filename}.js"
-  },
-  "author": "kento takeuchi",
-  "license": "ISC"
+  "author": "kento takeuchi"
 }

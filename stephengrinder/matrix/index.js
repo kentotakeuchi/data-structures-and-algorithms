@@ -15,46 +15,45 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
+/**
+ *
+ * @param {number} n
+ * @return {number[][]}
+ */
+
 // MINE
 function matrix(n) {
-  const results = Array(n)
-    .fill()
-    .map(() => Array(n).fill(0));
+  const results = new Array(n).fill().map(el => new Array(n).fill(0))
 
-  let top = 0;
-  let bottom = n - 1;
-  let left = 0;
-  let right = n - 1;
-  let count = 1;
+  let top = 0
+  let bottom = n - 1
+  let left = 0
+  let right = n - 1
+  let counter = 0
 
   while (top <= bottom || left <= right) {
-    for (let i = left; i <= right; i++) {
-      results[top][i] = count;
-      count++;
+    for (let col = left; col <= right; col++) {
+      results[top][col] = ++counter
     }
-    top++;
+    ++top
 
-    for (let i = top; i <= bottom; i++) {
-      results[i][right] = count;
-      count++;
+    for (let row = top; row <= bottom; row++) {
+      results[row][right] = ++counter
     }
-    right--;
+    --right
 
-    for (let i = right; i >= left; i--) {
-      results[bottom][i] = count;
-      count++;
+    for (let col = right; col >= left; col--) {
+      results[bottom][col] = ++counter
     }
-    bottom--;
+    --bottom
 
-    for (let i = bottom; i >= top; i--) {
-      results[i][left] = count;
-      count++;
+    for (let row = bottom; row >= top; row--) {
+      results[row][left] = ++counter
     }
-    left++;
+    ++left
   }
 
-  console.log({ results });
-  return results;
+  return results
 }
 
 // ANSWER
@@ -104,4 +103,4 @@ function matrix(n) {
 //   return results;
 // }
 
-module.exports = matrix;
+module.exports = matrix
