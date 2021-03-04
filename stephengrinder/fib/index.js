@@ -9,50 +9,39 @@
 //   fib(4) === 3
 
 function fib(n) {
-  // return iterative(n);
-  // return recursive(n);
-  return recursiveWithMemo(n);
+  // return iterative(n)
+  // return slowFib(n)
+  return recursiveWithMemo(n)
 }
 
 function iterative(n) {
-  if (n < 2) return n;
-
-  const arr = [0, 1];
+  const arr = [0, 1]
   for (let i = 2; i <= n; i++) {
-    arr.push(arr[i - 2] + arr[i - 1]);
+    arr.push(arr[i - 2] + arr[i - 1])
   }
-  console.log({ arr });
-  return arr[n];
-}
-
-function recursive(n) {
-  if (n < 2) return n;
-
-  return recursive(n - 2) + recursive(n - 1);
+  console.log({ arr }, arr[n])
+  return arr[n]
 }
 
 // MINE: RECURSIVE + MEMOIZATION
 function slowFib(n) {
-  if (n < 2) return n;
-  return recursiveWithMemo(n - 2) + recursiveWithMemo(n - 1);
+  if (n < 2) return n
+  return recursiveWithMemo(n - 2) + recursiveWithMemo(n - 1)
 }
 
 function memoization(fn) {
-  const cache = {};
-
+  const cache = {}
   return function (...args) {
-    // console.log({ args });
     if (cache[args]) {
-      return cache[args];
+      return cache[args]
     }
-
-    const result = fn.apply(this, args);
-    cache[args] = result;
-    return result;
-  };
+    const result = fn.apply(this, args)
+    cache[args] = result
+    return result
+  }
 }
 
-const recursiveWithMemo = memoization(slowFib);
+const recursiveWithMemo = memoization(slowFib)
 
 // ANSWER: ITERATIVE
 // function fib(n) {
@@ -96,4 +85,4 @@ const recursiveWithMemo = memoization(slowFib);
 
 // const fib = memoize(slowFib);
 
-module.exports = fib;
+module.exports = fib
