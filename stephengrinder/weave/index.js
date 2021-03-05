@@ -22,18 +22,18 @@
 //    q.remove() // 2
 //    q.remove() // 'There'
 
-const Queue = require('./queue');
+const Queue = require('./queue')
 
 // MINE
 function weave(sourceOne, sourceTwo) {
-  const q = new Queue();
+  const q = new Queue()
 
-  while (sourceOne.data.length || sourceTwo.data.length) {
-    if (sourceOne.peek()) q.add(sourceOne.remove());
-    if (sourceTwo.peek()) q.add(sourceTwo.remove());
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    if (sourceOne.peek()) q.add(sourceOne.remove())
+    if (sourceTwo.peek()) q.add(sourceTwo.remove())
   }
 
-  return q;
+  return q
 }
 
 // ANSWER
@@ -48,4 +48,4 @@ function weave(sourceOne, sourceTwo) {
 //   return q;
 // }
 
-module.exports = weave;
+module.exports = weave
