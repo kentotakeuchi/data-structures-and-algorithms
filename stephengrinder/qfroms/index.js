@@ -12,39 +12,39 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-const Stack = require('./stack');
+const Stack = require('./stack')
 
 // MINE
 class Queue {
   constructor() {
-    this.s1 = new Stack();
-    this.s2 = new Stack();
+    this.s1 = new Stack()
+    this.s2 = new Stack()
   }
 
   add(val) {
-    this.s1.push(val);
+    this.s1.push(val)
   }
 
   remove() {
     while (this.s1.peek()) {
-      this.s2.push(this.s1.pop());
+      this.s2.push(this.s1.pop())
     }
-    const removed = this.s2.pop();
+    const removed = this.s2.pop()
     while (this.s2.peek()) {
-      this.s1.push(this.s2.pop());
+      this.s1.push(this.s2.pop())
     }
-    return removed;
+    return removed
   }
 
   peek() {
     while (this.s1.peek()) {
-      this.s2.push(this.s1.pop());
+      this.s2.push(this.s1.pop())
     }
-    const peeked = this.s2.peek();
+    const peeked = this.s2.peek()
     while (this.s2.peek()) {
-      this.s1.push(this.s2.pop());
+      this.s1.push(this.s2.pop())
     }
-    return peeked;
+    return peeked
   }
 }
 
@@ -88,4 +88,4 @@ class Queue {
 //   }
 // }
 
-module.exports = Queue;
+module.exports = Queue
