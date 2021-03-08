@@ -45,7 +45,10 @@ class LinkedList {
     this.head = null
   }
 
-  removeFirst() {}
+  removeFirst() {
+    if (!this.head) return
+    this.head = this.head.next
+  }
 
   removeLast() {
     if (!this.head) return
@@ -54,77 +57,25 @@ class LinkedList {
       return
     }
     let prev = this.head
-    let cur = this.head.next
-    while (cur.next) {
-      prev = prev.next
-      cur = cur.next
+    let node = this.head.next
+    while (node.next) {
+      prev = node
+      node = node.next
     }
     prev.next = null
   }
 
-  insertLast(val) {
-    const tail = this.getLast()
-    if (tail) {
-      tail.next = new Node(val)
-    } else {
-      this.head = new Node(val)
-    }
-  }
+  insertLast(val) {}
 
-  getAt(idx) {
-    if (!this.head) return null
-    if (idx < 0 || this.size() <= idx) return
-    let node = this.head
-    while (idx) {
-      node = node.next
-      --idx
-    }
-    return node
-  }
+  getAt(idx) {}
 
-  removeAt(idx) {
-    if (!this.head) {
-      return
-    }
-    if (idx === 0) {
-      this.head = this.head.next
-      return
-    }
-    const prev = this.getAt(idx - 1)
-    if (!prev || !prev.next) {
-      return
-    }
-    prev.next = prev.next.next
-  }
+  removeAt(idx) {}
 
-  insertAt(val, idx) {
-    if (!this.head || idx === 0) {
-      this.insertFirst(val)
-      return
-    }
-    const prev = this.getAt(idx - 1)
-    if (!prev || !prev.next) {
-      this.insertLast(val)
-      return
-    }
-    prev.next = new Node(val, prev.next)
-  }
+  insertAt(val, idx) {}
 
-  forEach(fn) {
-    let node = this.head
-    while (node) {
-      fn(node)
-      node = node.next
-    }
-  }
+  forEach(fn) {}
 
-  *[Symbol.iterator]() {
-    let node = this.head
-    while (node) {
-      yield node
-      node = node.next
-    }
-  }
+  *[Symbol.iterator]() {}
 }
 
 // ANSWER2
