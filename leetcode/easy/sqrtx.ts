@@ -19,7 +19,7 @@ const mySqrt = function(x) {
 */
 
 // ANSWER2: binary search: O(log2(n))
-const mySqrt = function (x) {
+const mySqrt = function (x: number): number {
   let start = 0
   let end = x
   let res = 0
