@@ -34,6 +34,7 @@ class LinkedList {
   }
 
   getLast() {
+    if (!this.head) return
     let node = this.head
     while (node.next) {
       node = node.next
@@ -65,7 +66,14 @@ class LinkedList {
     prev.next = null
   }
 
-  insertLast(val) {}
+  insertLast(val) {
+    if (!this.head) {
+      this.head = new Node(val)
+      return
+    }
+    let last = this.getLast()
+    last.next = new Node(val)
+  }
 
   getAt(idx) {}
 
