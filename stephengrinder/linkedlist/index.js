@@ -75,7 +75,15 @@ class LinkedList {
     last.next = new Node(val)
   }
 
-  getAt(idx) {}
+  getAt(idx) {
+    if (!this.head) return null
+    if (idx < 0 || this.size() < idx) return null
+    let node = this.head
+    for (let i = 0; i < idx; i++) {
+      node = node.next
+    }
+    return node
+  }
 
   removeAt(idx) {}
 
