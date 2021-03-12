@@ -16,7 +16,7 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 */
 
 // ANSWER
-var merge = function (nums1, m, nums2, n) {
+var merge = function (nums1: number[], m: number, nums2: number[], n: number): void {
   var insertPos = m + n - 1
   m--
   n--
