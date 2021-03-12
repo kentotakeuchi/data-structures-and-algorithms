@@ -85,7 +85,18 @@ class LinkedList {
     return node
   }
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (!this.head) return
+    if (idx === 0) {
+      this.head = this.head.next
+      return
+    }
+    let prev = this.getAt(idx - 1)
+    if (!prev || !prev.next) {
+      return
+    }
+    prev.next = prev.next.next
+  }
 
   insertAt(val, idx) {}
 
