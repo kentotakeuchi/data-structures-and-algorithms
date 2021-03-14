@@ -98,7 +98,24 @@ class LinkedList {
     prev.next = prev.next.next
   }
 
-  insertAt(val, idx) {}
+  insertAt(val, idx) {
+    if (!this.head) {
+      this.head = new Node(val)
+      return
+    }
+    if (idx === 0) {
+      this.head = new Node(val, this.head)
+      return
+    }
+
+    let prev = this.getAt(idx - 1)
+    if (!prev) {
+      const last = this.getLast()
+      last.next = new Node(val)
+      return
+    }
+    prev.next = new Node(val, prev.next)
+  }
 
   forEach(fn) {}
 
