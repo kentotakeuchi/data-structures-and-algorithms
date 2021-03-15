@@ -117,9 +117,24 @@ class LinkedList {
     prev.next = new Node(val, prev.next)
   }
 
-  forEach(fn) {}
+  forEach(fn) {
+    if (!this.head) return
+    let index = 0
+    let node = this.head
+    while (node) {
+      fn(node, index)
+      ++index
+      node = node.next
+    }
+  }
 
-  *[Symbol.iterator]() {}
+  *[Symbol.iterator]() {
+    let node = this.head
+    while (node) {
+      yield node
+      node = node.next
+    }
+  }
 }
 
 // ANSWER2
