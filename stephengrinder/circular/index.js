@@ -12,20 +12,27 @@
 //   c.next = b;
 //   circular(l) // true
 
+const { LinkedList } = require('./linkedlist')
+
+/**
+ *
+ * @param {(LinkedList|null)} list
+ * @return {boolean}
+ */
+
 // MINE
 function circular(list) {
-  let slow = list.head;
-  let fast = list.head;
-
-  while (fast.next && fast.next.next) {
-    slow = slow.next;
-    fast = fast.next.next;
+  if (!list.head) return false
+  let slow = list.getFirst()
+  let fast = list.getFirst()
+  while (fast && fast.next) {
+    slow = slow.next
+    fast = fast.next.next
     if (slow === fast) {
-      return true;
+      return true
     }
   }
-
-  return false;
+  return false
 }
 
 // ANSWER
@@ -41,4 +48,4 @@ function circular(list) {
 //   return false;
 // }
 
-module.exports = circular;
+module.exports = circular
