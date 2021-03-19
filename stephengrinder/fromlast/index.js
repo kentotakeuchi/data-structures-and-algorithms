@@ -11,24 +11,41 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
+const { LinkedList } = require('./linkedlist')
+
+/**
+ *
+ * @param {(LinkedList|null)} list
+ * @param {number} n
+ * @return {LinkedList|null}
+ */
+
 // MINE
 function fromLast(list, n) {
-  return s1(list, n);
+  return s1(list, n)
   // return s2(list, n);
 }
 
+/**
+ *
+ * @param {(LinkedList|null)} list
+ * @param {number} n
+ * @return {LinkedList|null}
+ */
+
 function s1(list, n) {
-  let slow = list.head;
-  let fast = list.head;
-  while (n) {
-    fast = fast.next;
-    --n;
+  if (!list.head) return null
+  let slow = list.getFirst()
+  let fast = list.getFirst()
+  while (n > 0) {
+    fast = fast.next
+    --n
   }
   while (fast.next) {
-    slow = slow.next;
-    fast = fast.next;
+    slow = slow.next
+    fast = fast.next
   }
-  return slow;
+  return slow
 }
 
 function s2(list, n) {}
@@ -64,4 +81,4 @@ function s2(list, n) {}
 //   return node;
 // }
 
-module.exports = fromLast;
+module.exports = fromLast
