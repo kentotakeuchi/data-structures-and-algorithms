@@ -13,41 +13,41 @@
 // MINE
 class Node {
   constructor(data, children = []) {
-    this.data = data;
-    this.children = children;
+    this.data = data
+    this.children = children
   }
 
   add(val) {
-    this.children.push(new Node(val));
+    this.children.push(new Node(val))
   }
 
   remove(val) {
-    this.children = this.children.filter((node) => node.data !== val);
+    this.children = this.children.filter(el => !el)
   }
 }
 
 class Tree {
   constructor() {
-    this.root = null;
+    this.root = null
   }
 
   traverseBF(fn) {
-    if (!this.root) return;
-    const q = [this.root];
-    while (q.length) {
-      const node = q.shift();
-      fn(node);
-      q.push(...node.children);
+    if (!this.root) return
+    const arr = [this.root]
+    while (arr.length) {
+      const node = arr.shift()
+      fn(node)
+      arr.push(...node.children)
     }
   }
 
   traverseDF(fn) {
-    if (!this.root) return;
-    const q = [this.root];
-    while (q.length) {
-      const node = q.shift();
-      q.unshift(...node.children);
-      fn(node);
+    if (!this.root) return
+    const arr = [this.root]
+    while (arr.length) {
+      const node = arr.shift()
+      fn(node)
+      arr.unshift(...node.children)
     }
   }
 }
@@ -92,4 +92,4 @@ class Tree {
 //   }
 // }
 
-module.exports = { Tree, Node };
+module.exports = { Tree, Node }
