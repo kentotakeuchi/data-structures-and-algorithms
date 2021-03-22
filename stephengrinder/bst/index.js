@@ -13,36 +13,34 @@
 
 class Node {
   constructor(data) {
-    this.data = data;
-    this.left = null;
-    this.right = null;
+    this.data = data
+    this.left = null
+    this.right = null
   }
 
   insert(val) {
-    if (val < this.data && this.left) {
-      this.left.insert(val);
-    } else if (this.data < val && this.right) {
-      this.right.insert(val);
-    } else if (val < this.data && !this.left) {
-      this.left = new Node(val);
+    if (val < this.data && !this.left) {
+      this.left = new Node(val)
     } else if (this.data < val && !this.right) {
-      this.right = new Node(val);
+      this.right = new Node(val)
+    } else if (val < this.data && this.left) {
+      this.left.insert(val)
+    } else if (this.data < val && this.right) {
+      this.right.insert(val)
     }
   }
 
   contains(val) {
     if (val === this.data) {
-      return this;
+      return this
     }
-    if (val < this.data && !this.left) {
-      return null;
-    } else if (this.data < val && !this.right) {
-      return null;
-    } else if (val < this.data) {
-      return this.left.contains(val);
-    } else if (this.data < val) {
-      return this.right.contains(val);
+    if (this.left && val < this.data) {
+      return this.left.contains(val)
     }
+    if (this.right && this.data < val) {
+      return this.right.contains(val)
+    }
+    return null
   }
 }
 
@@ -78,4 +76,4 @@ class Node {
 //   }
 // }
 
-module.exports = Node;
+module.exports = Node
