@@ -13,7 +13,7 @@ function convertToTitle(columnNumber: number): string {
 };
 */
 
-// ANSWER: not work..
+// ANSWER:
 var convertToTitle = function (n: number): string {
   if (n == 0) return ''
   let result = ''
