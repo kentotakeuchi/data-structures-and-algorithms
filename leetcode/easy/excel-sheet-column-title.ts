@@ -2,7 +2,7 @@
 
 // ascii code --> A:65, Z:90
 
-// MINE
+// MINE..
 /*
 function convertToTitle(columnNumber: number): string {
     if(columnNumber < 27) return String.fromCharCode(columnNumber)
