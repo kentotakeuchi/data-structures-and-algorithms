@@ -8,7 +8,7 @@ function hammingWeight(n: number): number {
 */
 
 // ANSWER
-var hammingWeight = function (n) {
+var hammingWeight = function (n: number): number {
   // remove 0s from base2 representation of the number
   return n.toString(2).replace(/0/g, '').length
 }
