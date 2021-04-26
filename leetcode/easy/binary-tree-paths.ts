@@ -18,3 +18,4 @@
 function binaryTreePaths(root: TreeNode | null): string[] {}
 
 // ANSWER
+console.log()
