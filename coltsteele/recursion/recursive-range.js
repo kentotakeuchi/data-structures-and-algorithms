@@ -8,6 +8,10 @@
  */
 
 // MINE
-function recursiveRange(num) {}
+function recursiveRange(num) {
+  if (!num) return 0
+  return num + recursiveRange(num - 1)
+}
 
-recursiveRange(6)
+console.log(recursiveRange(6))
+console.log(recursiveRange(10))
