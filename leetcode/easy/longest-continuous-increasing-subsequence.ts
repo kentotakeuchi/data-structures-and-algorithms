@@ -19,7 +19,7 @@ function findLengthOfLCIS(nums: number[]): number {
 };
 */
 
-// ANSWER
+// ANSWER: sliding window
 function findLengthOfLCIS(nums: number[]): number {
   if (nums.length < 2) return nums.length
   let left = 0,
