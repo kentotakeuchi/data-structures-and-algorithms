@@ -20,7 +20,7 @@ function numberOfSteps(num: number): number {
   let ans = 0
   while (num) {
     ans += num & 1 ? 2 : 1 // (num & 1) = (num % 2 === 1)
-    num >>= 1 // = Math.floor(num / 2)
+    num >>= 1 // = num = Math.floor(num / 2)
   }
   return --ans
 }
