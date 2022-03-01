@@ -21,6 +21,10 @@ const RULE_IDX = {
   name: 2
 }
 
-function countMatches(items: string[][], ruleKey: string, ruleValue: string): number {
+function countMatches(
+  items: string[][],
+  ruleKey: 'type' | 'color' | 'name',
+  ruleValue: string
+): number {
   return items.reduce((ans, item) => (item[RULE_IDX[ruleKey]] === ruleValue ? ans + 1 : ans), 0)
 }
