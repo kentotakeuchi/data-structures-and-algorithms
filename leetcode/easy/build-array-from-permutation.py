@@ -6,3 +6,5 @@ class Solution:
         for i in range(n):
             nums[i] = nums[i] // n
         return nums
+
+# memo: // -> division + floor
