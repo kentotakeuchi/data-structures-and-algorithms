@@ -19,5 +19,5 @@ function repeatedCharacter(s: string): string {
     if (set.has(c)) return c
     set.add(c)
   }
-  // return ''
+  return ''
 }
