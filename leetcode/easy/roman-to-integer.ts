@@ -71,26 +71,54 @@
 // };
 
 // ANOTHER ANSWER
-var romanToInt = function (s: string): number {
-  var map = {
+// var romanToInt = function (s: string): number {
+//   var map = {
+//     I: 1,
+//     V: 5,
+//     X: 10,
+//     L: 50,
+//     C: 100,
+//     D: 500,
+//     M: 1000,
+//   };
+//   var number = 0;
+//   var index;
+//   if (s.indexOf('CM') != -1) number -= 200;
+//   if (s.indexOf('CD') != -1) number -= 200;
+//   if (s.indexOf('XC') != -1) number -= 20;
+//   if (s.indexOf('XL') != -1) number -= 20;
+//   if (s.indexOf('IX') != -1) number -= 2;
+//   if (s.indexOf('IV') != -1) number -= 2;
+//   for (var i = 0; i < s.length; i++) {
+//     number += map[s[i]];
+//   }
+//   return number;
+// };
+
+// mine
+// ! idk how to type the formal parameter "s"..
+type PossibleKeyType = 'I' | 'V' | 'X' | 'L' | 'C' | 'D' | 'M'
+type KeyCheck<S> = S extends ''
+  ? unknown
+  : S extends `${PossibleKeyType}${infer Tail}`
+  ? KeyCheck<Tail>
+  : never
+
+function romanToInt<S extends string>(s: S & KeyCheck<S>): number {
+  const map: { [key in PossibleKeyType]: number } = {
     I: 1,
     V: 5,
     X: 10,
     L: 50,
     C: 100,
     D: 500,
-    M: 1000,
-  };
-  var number = 0;
-  var index;
-  if (s.indexOf('CM') != -1) number -= 200;
-  if (s.indexOf('CD') != -1) number -= 200;
-  if (s.indexOf('XC') != -1) number -= 20;
-  if (s.indexOf('XL') != -1) number -= 20;
-  if (s.indexOf('IX') != -1) number -= 2;
-  if (s.indexOf('IV') != -1) number -= 2;
-  for (var i = 0; i < s.length; i++) {
-    number += map[s[i]];
+    M: 1000
   }
-  return number;
-};
+  let ans = 0
+
+  for (let i = 0; i < s.length; ++i) {
+    map[s[i]] < map[s[i + 1]] ? (ans -= map[s[i]]) : (ans += map[s[i]])
+  }
+
+  return ans
+}
