@@ -103,23 +103,37 @@ function commonPrefix(left: string, right: string) {
 */
 
 // ANSWER: Binary search
-function longestCommonPrefix(strs: string[]): string {
-  if (strs == null || strs.length == 0) return '';
-  let minLen = Infinity;
-  for (let str of strs) minLen = Math.min(minLen, str.length);
-  let low = 1;
-  let high = minLen;
-  while (low <= high) {
-    let middle = Math.floor((low + high) / 2);
-    if (isCommonPrefix(strs, middle)) low = middle + 1;
-    else high = middle - 1;
-  }
-  return strs[0].substring(0, Math.floor((low + high) / 2));
-}
+// function longestCommonPrefix(strs: string[]): string {
+//   if (strs == null || strs.length == 0) return '';
+//   let minLen = Infinity;
+//   for (let str of strs) minLen = Math.min(minLen, str.length);
+//   let low = 1;
+//   let high = minLen;
+//   while (low <= high) {
+//     let middle = Math.floor((low + high) / 2);
+//     if (isCommonPrefix(strs, middle)) low = middle + 1;
+//     else high = middle - 1;
+//   }
+//   return strs[0].substring(0, Math.floor((low + high) / 2));
+// }
 
-function isCommonPrefix(strs: string[], len: number) {
-  let str1 = strs[0].substring(0, len);
-  for (let i = 1; i < strs.length; i++)
-    if (!strs[i].startsWith(str1)) return false;
-  return true;
+// function isCommonPrefix(strs: string[], len: number) {
+//   let str1 = strs[0].substring(0, len);
+//   for (let i = 1; i < strs.length; i++)
+//     if (!strs[i].startsWith(str1)) return false;
+//   return true;
+// }
+
+// mine
+function longestCommonPrefix(strs: string[]): string {
+  let ans = ''
+  const min = Math.min(...strs.map(s => s.length))
+  for (let i = 0; i < min; ++i) {
+    let char = strs[0][i]
+    for (let str of strs) {
+      if (str[i] !== char) return ans
+    }
+    ans += char
+  }
+  return ans
 }
