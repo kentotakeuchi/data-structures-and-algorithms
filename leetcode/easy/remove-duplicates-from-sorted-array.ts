@@ -35,18 +35,30 @@ function removeDuplicates(nums: number[]): number {
 */
 
 // ANOTHER ANSWER: remove duplicates from array
-var removeDuplicates = function (nums) {
-  if (nums.length < 2) return nums.length;
+// var removeDuplicates = function (nums) {
+//   if (nums.length < 2) return nums.length;
 
-  let i = nums.length - 2;
+//   let i = nums.length - 2;
 
-  while (i >= 0) {
-    if (nums[i + 1] === nums[i]) {
-      nums.splice(i, 1);
+//   while (i >= 0) {
+//     if (nums[i + 1] === nums[i]) {
+//       nums.splice(i, 1);
+//     }
+
+//     i--;
+//   }
+
+//   return nums.length;
+// };
+
+// try2
+function removeDuplicates(nums: number[]): number {
+  let i = 0
+  for (let j = 1; j < nums.length; ++j) {
+    if (nums[i] !== nums[j]) {
+      ++i
+      nums[i] = nums[j]
     }
-
-    i--;
   }
-
-  return nums.length;
-};
+  return i + 1
+}
