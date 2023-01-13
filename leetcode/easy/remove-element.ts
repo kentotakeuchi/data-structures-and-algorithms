@@ -18,16 +18,31 @@ function removeElement(nums: number[], val: number): number {
 */
 
 // ANSWER: two pointer - when elements to remove are rare
+// function removeElement(nums: number[], val: number): number {
+//   let i = 0
+//   let n = nums.length
+//   while (i < n) {
+//     if (nums[i] == val) {
+//       nums[i] = nums[n - 1]
+//       // reduce array size by one
+//       n--
+//     } else {
+//       i++
+//     }
+//   }
+//   return n
+// }
+
+// try2
 function removeElement(nums: number[], val: number): number {
-  let i = 0
-  let n = nums.length
+  let i = 0,
+    n = nums.length
   while (i < n) {
-    if (nums[i] == val) {
+    if (nums[i] === val) {
       nums[i] = nums[n - 1]
-      // reduce array size by one
-      n--
+      --n
     } else {
-      i++
+      ++i
     }
   }
   return n
