@@ -76,17 +76,30 @@ var searchInsert = function(nums, target) {
 */
 
 // ANSWER: maybe basic(same approach as me)
-var searchInsert = function (nums, target) {
-  let high = nums.length - 1
-  let low = 0
-  while (low <= high) {
-    let mid = Math.floor((high + low) / 2)
-    if (nums[mid] == target) return mid
-    else if (nums[mid] > target) {
-      high = mid - 1
-    } else {
-      low = mid + 1
-    }
+// var searchInsert = function (nums, target) {
+//   let high = nums.length - 1
+//   let low = 0
+//   while (low <= high) {
+//     let mid = Math.floor((high + low) / 2)
+//     if (nums[mid] == target) return mid
+//     else if (nums[mid] > target) {
+//       high = mid - 1
+//     } else {
+//       low = mid + 1
+//     }
+//   }
+//   return low
+// }
+
+// try2
+function searchInsert(nums: number[], target: number): number {
+  let start = 0,
+    end = nums.length - 1
+  while (start <= end) {
+    const mid = Math.floor((start + end) / 2)
+    if (nums[mid] === target) return mid
+    else if (nums[mid] > target) end = mid - 1
+    else start = mid + 1
   }
-  return low
+  return start
 }
