@@ -19,15 +19,29 @@ function plusOne(digits: number[]): number[] {
 */
 
 // ANSWER
-var plusOne = function (digits) {
-  for (var i = digits.length - 1; i >= 0; i--) {
-    digits[i]++
-    if (digits[i] > 9) {
-      digits[i] = 0
+// var plusOne = function (digits) {
+//   for (var i = digits.length - 1; i >= 0; i--) {
+//     digits[i]++
+//     if (digits[i] > 9) {
+//       digits[i] = 0
+//     } else {
+//       return digits
+//     }
+//   }
+//   digits.unshift(1)
+//   return digits
+// }
+
+// try2
+function plusOne(d: number[]): number[] {
+  for (let i = d.length - 1; i >= 0; --i) {
+    ++d[i]
+    if (d[i] > 9) {
+      d[i] = 0
     } else {
-      return digits
+      return d
     }
   }
-  digits.unshift(1)
-  return digits
+  d.unshift(1)
+  return d
 }
